@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "NetBooster.Tests/1.0.0": {
+        "dependencies": {
+          "NetBooster": "1.0.0"
+        },
+        "runtime": {
+          "NetBooster.Tests.dll": {}
+        }
+      },
+      "NetBooster/1.0.0": {
+        "runtime": {
+          "NetBooster.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NetBooster.Tests/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NetBooster/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

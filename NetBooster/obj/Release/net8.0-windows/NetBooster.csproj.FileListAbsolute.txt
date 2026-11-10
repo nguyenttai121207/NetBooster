@@ -1,0 +1,14 @@
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.GeneratedMSBuildEditorConfig.editorconfig
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.AssemblyInfoInputs.cache
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.AssemblyInfo.cs
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.csproj.CoreCompileInputs.cache
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\NetBooster.exe
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\NetBooster.deps.json
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\NetBooster.runtimeconfig.json
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\NetBooster.dll
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\NetBooster.pdb
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.dll
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\refint\NetBooster.dll
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.pdb
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.genruntimeconfig.cache
+D:\NetBooster\NetBooster\obj\Release\net8.0-windows\ref\NetBooster.dll

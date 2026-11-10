@@ -1,0 +1,5 @@
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\publish\NetBooster.exe
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\publish\NetBooster.dll
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\publish\NetBooster.deps.json
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\publish\NetBooster.runtimeconfig.json
+D:\NetBooster\NetBooster\bin\Release\net8.0-windows\publish\NetBooster.pdb
