@@ -1,0 +1,18 @@
+# .NET build output
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / Rider user state
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Local application data and logs
+*.log
+
+# Never publish VPN configuration or private keys
+*.conf
+*.key
+*.pem
