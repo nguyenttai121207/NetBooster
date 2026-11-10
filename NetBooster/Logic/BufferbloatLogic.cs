@@ -10,16 +10,25 @@ public static class BufferbloatLogic
 
     public static string Conclude(BufferbloatEndpointResult? gateway, BufferbloatEndpointResult internet, string? loadError)
     {
-        if (!string.IsNullOrWhiteSpace(loadError)) return "Không thể hoàn tất phép tải tạo tải. Không kết luận về bufferbloat; hãy kiểm tra URL hoặc kết nối rồi đo lại.";
-        if (gateway is not null && (gateway.Loaded.LossPercent > Math.Max(5, gateway.Baseline.LossPercent + 3) || gateway.Loaded.Received == 0))
-            return "Có mất gói tới gateway khi có tải: ưu tiên kiểm tra Wi‑Fi/nội bộ (sóng, nhiễu, vị trí router) trước.";
-        if (internet.Loaded.LossPercent > Math.Max(5, internet.Baseline.LossPercent + 3))
-            return "Có mất gói ra Internet khi có tải. Nếu gateway vẫn ổn, đường truyền hoặc router có thể bị quá tải.";
+        if (!string.IsNullOrWhiteSpace(loadError)) 
+            return "Không thể hoàn tất phép đo có tải (kiểm tra lại kết nối mạng hoặc URL).";
+        
+        // Loss on gateway indicates local Wi-Fi / LAN instability
+        if (gateway is not null && (gateway.Loaded.LossPercent > 5 || gateway.Baseline.LossPercent > 5 || gateway.Loaded.JitterMs > 25))
+            return "Wi-Fi chập chờn, mất gói (ưu tiên kiểm tra sóng Wi-Fi, vị trí router hoặc thử dùng dây LAN).";
+
+        // Loss on internet while gateway is clean
+        if (internet.Loaded.LossPercent > 5)
+            return "Wi-Fi chập chờn, mất gói (mất gói ra Internet khi có tải; đường truyền hoặc modem bị quá tải).";
+
+        // Latency spike >= 30ms and loaded latency >= 1.5x baseline
         if (internet.MedianIncreaseMs >= 30 && internet.Loaded.MedianMs >= internet.Baseline.MedianMs * 1.5)
-            return "Có dấu hiệu bufferbloat: độ trễ Internet tăng mạnh khi tải xuống. NetBooster không thể sửa ở PC; hãy bật/cấu hình SQM hoặc QoS trên router.";
+            return "Bufferbloat cao (Gợi ý bật SQM trên Router để ổn định độ trễ khi có người tải mạng).";
+
         if (internet.JitterIncreaseMs >= 20)
-            return "Jitter tăng rõ khi có tải. Hãy thử SQM/QoS trên router và đo lại, đồng thời kiểm tra thiết bị đang tải nền.";
-        return "Trong lần đo này mạng khá ổn định khi có tải. Kết quả không chứng minh băng thông hoặc chất lượng sẽ luôn ổn định.";
+            return "Bufferbloat cao (Gợi ý bật SQM trên Router - Jitter tăng mạnh khi có tải).";
+
+        return "Mạng ổn định";
     }
 
     private static double ValidDelta(double before, double after) => before < 0 || after < 0 ? double.NaN : after - before;

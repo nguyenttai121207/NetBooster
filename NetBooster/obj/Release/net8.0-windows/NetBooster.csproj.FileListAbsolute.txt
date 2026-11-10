@@ -12,3 +12,4 @@ D:\NetBooster\NetBooster\obj\Release\net8.0-windows\refint\NetBooster.dll
 D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.pdb
 D:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.genruntimeconfig.cache
 D:\NetBooster\NetBooster\obj\Release\net8.0-windows\ref\NetBooster.dll
+d:\NetBooster\NetBooster\obj\Release\net8.0-windows\NetBooster.sourcelink.json

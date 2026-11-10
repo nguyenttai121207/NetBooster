@@ -39,12 +39,12 @@ public sealed class NetworkDiagnostics
 
 public static class MeasurementLogic
 {
-    public static PingSummary BuildPingSummary(string target, int sent, IReadOnlyList<long> orderedRoundTrips)
+    public static PingSummary BuildPingSummary(string target, int sent, IReadOnlyList<long> roundTrips)
     {
-        var sorted = orderedRoundTrips.OrderBy(x => x).ToArray();
-        var received = orderedRoundTrips.Count;
+        var sorted = roundTrips.OrderBy(x => x).ToArray();
+        var received = roundTrips.Count;
         var median = sorted.Length == 0 ? -1 : sorted[sorted.Length / 2];
-        var jitter = orderedRoundTrips.Count < 2 ? 0 : Enumerable.Range(1, orderedRoundTrips.Count - 1).Average(i => Math.Abs(orderedRoundTrips[i] - orderedRoundTrips[i - 1]));
+        var jitter = roundTrips.Count < 2 ? 0 : Enumerable.Range(1, roundTrips.Count - 1).Average(i => Math.Abs(roundTrips[i] - roundTrips[i - 1]));
         return new PingSummary(target, sent, received, sent <= 0 ? 100 : (sent - received) * 100.0 / sent, median, jitter, received == 0 ? "Không nhận được phản hồi" : null);
     }
 

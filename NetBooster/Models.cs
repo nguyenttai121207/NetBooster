@@ -1,8 +1,9 @@
 using System.Net;
+using System.Net.Sockets;
 
 namespace NetBooster;
 
-public sealed record NetworkAdapterInfo(int InterfaceIndex, string Name, string Description, bool IsWifi, bool IsUp);
+public sealed record NetworkAdapterInfo(int InterfaceIndex, string Name, string Description, bool IsWifi, bool IsUp, string Id = "");
 
 public sealed record PingSummary(
     string Target,
@@ -52,10 +53,53 @@ public sealed record BufferbloatEndpointResult(PingSummary Baseline, PingSummary
 public sealed record BufferbloatResult(BufferbloatEndpointResult? Gateway, BufferbloatEndpointResult Internet, long DownloadedBytes, string? LoadError, string Conclusion);
 
 public sealed record AdapterPowerState(string? SelectiveSuspend, string? DeviceSleepOnDisconnect, string? D0PacketCoalescing, string? WakeOnMagicPacket, string? WakeOnPattern);
-public sealed record AdapterPowerBackup(int InterfaceIndex, AdapterPowerState State, DateTime SavedAtUtc);
-public sealed record PowerPlanBackup(Guid SchemeGuid, DateTime SavedAtUtc);
+public sealed record AdapterPowerBackup(string InterfaceGuid, AdapterPowerState State, DateTime SavedAtUtc);
+
+public sealed record WifiDriverProperty(string DisplayName, string CurrentValue, IReadOnlyList<string> ValidValues, string RegistryKeyword);
+public sealed record WifiDriverPropertiesState(IReadOnlyList<WifiDriverProperty> Properties);
+public sealed record WifiDriverBackup(string InterfaceGuid, Dictionary<string, string> SavedValues, DateTime SavedAtUtc);
+
+public sealed record PowerPlanBackup(Guid SchemeGuid, string? SchemeName, DateTime SavedAtUtc);
 public sealed record DeliveryOptimizationBackup(int? BackgroundPercent, DateTime SavedAtUtc);
 public sealed record DeliveryOptimizationState(bool IsSupported, int? BackgroundPercent, string Message);
 
 public sealed record NetworkProcessActivity(int ProcessId, string ProcessName, int ActiveTcpConnections, DateTime ObservedAtUtc);
-public sealed record UsageProfile(string Name, string Description, IReadOnlyList<string> Steps, bool MakesChanges);
+
+// --- v2.0 additions ---
+
+public enum StatusLevel { Good, Warning, Bad }
+
+public sealed record ScanResult(
+    PingSummary? GatewayPing,
+    PingSummary? InternetPing,
+    WifiInfo? Wifi,
+    double? DnsCurrentSpeedMs,
+    IReadOnlyList<NetworkProcessActivity> TopProcesses,
+    DeliveryOptimizationState? DeliveryOptimization,
+    AdapterPowerState? AdapterPower,
+    IReadOnlyList<WifiDriverProperty> DriverProperties,
+    IReadOnlyList<WifiBss> NearbyNetworks,
+    IReadOnlyList<ChannelRecommendation> ChannelRecommendations,
+    BufferbloatResult? Bufferbloat);
+
+public sealed record OptimizationItem(
+    string Id,
+    string Category,
+    string Title,
+    string Description,
+    StatusLevel Status,
+    bool IsSelected,
+    bool RequiresReboot);
+
+public sealed record CardResult(
+    string Title,
+    string ShortSummary,
+    StatusLevel Status,
+    string Details);
+
+public sealed record NetworkRepairAction(
+    string Id,
+    string Name,
+    string Description,
+    string WhenToUse,
+    bool RequiresReboot);

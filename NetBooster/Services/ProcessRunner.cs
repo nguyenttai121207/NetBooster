@@ -16,7 +16,6 @@ public sealed class ProcessRunner
     }
     public Task<(int ExitCode, string StdOut, string StdErr)> PowerShellAsync(string script, int timeoutMs = 30000)
     {
-        // EncodedCommand prevents shell-quoting mistakes. Callers still validate every value before it enters a script.
         var encoded = Convert.ToBase64String(System.Text.Encoding.Unicode.GetBytes(script));
         return RunAsync("powershell.exe", $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand {encoded}", timeoutMs);
     }

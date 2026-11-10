@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NetBooster.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9167c7cc7728361a9620baf52cd8a52af2d9ece6")]
 [assembly: System.Reflection.AssemblyProductAttribute("NetBooster.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NetBooster.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

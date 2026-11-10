@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NetBooster\\NetBooster\\NetBooster.csproj": {}
+    "d:\\NetBooster\\NetBooster\\NetBooster.csproj": {}
   },
   "projects": {
-    "D:\\NetBooster\\NetBooster\\NetBooster.csproj": {
+    "d:\\NetBooster\\NetBooster\\NetBooster.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NetBooster\\NetBooster\\NetBooster.csproj",
+        "projectUniqueName": "d:\\NetBooster\\NetBooster\\NetBooster.csproj",
         "projectName": "NetBooster",
-        "projectPath": "D:\\NetBooster\\NetBooster\\NetBooster.csproj",
+        "projectPath": "d:\\NetBooster\\NetBooster\\NetBooster.csproj",
         "packagesPath": "C:\\Users\\Toaif\\.nuget\\packages\\",
-        "outputPath": "D:\\NetBooster\\NetBooster\\obj\\",
+        "outputPath": "d:\\NetBooster\\NetBooster\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

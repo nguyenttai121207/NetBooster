@@ -4,7 +4,7 @@ namespace NetBooster.Services;
 
 public sealed class BufferbloatService
 {
-    public const string DefaultLoadUrl = "https://speed.cloudflare.com/__down?bytes=25000000";
+    public const string DefaultLoadUrl = "https://speed.cloudflare.com/__down?bytes=10000000";
     private readonly NetworkDiagnostics _diagnostics;
     private readonly AppLogger _log;
 

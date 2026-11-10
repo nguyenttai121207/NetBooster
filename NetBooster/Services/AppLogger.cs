@@ -4,7 +4,7 @@ namespace NetBooster.Services;
 
 public sealed class AppLogger
 {
-    private const long MaximumBytes = 512 * 1024;
+    private const long MaximumBytes = 5 * 1024 * 1024;
     private readonly object _gate = new();
     private readonly string _path;
 
