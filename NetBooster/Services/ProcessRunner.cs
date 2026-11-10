@@ -14,6 +14,10 @@ public sealed class ProcessRunner
         await exitTask;
         return (p.ExitCode, await output, await error);
     }
-    public Task<(int ExitCode, string StdOut, string StdErr)> PowerShellAsync(string script, int timeoutMs = 30000) =>
-        RunAsync("powershell.exe", $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -Command \"{script.Replace("\"", "\\\"")}\"", timeoutMs);
+    public Task<(int ExitCode, string StdOut, string StdErr)> PowerShellAsync(string script, int timeoutMs = 30000)
+    {
+        // EncodedCommand prevents shell-quoting mistakes. Callers still validate every value before it enters a script.
+        var encoded = Convert.ToBase64String(System.Text.Encoding.Unicode.GetBytes(script));
+        return RunAsync("powershell.exe", $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -EncodedCommand {encoded}", timeoutMs);
+    }
 }
